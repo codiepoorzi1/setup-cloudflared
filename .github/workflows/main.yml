@@ -1,0 +1,17 @@
+steps:
+  - name: Setup cloudflared
+    uses: AnimMouse/setup-cloudflared@v1
+    with:
+      cloudflare_tunnel_credential: ${{ secrets.CLOUDFLARE_TUNNEL_CREDENTIAL }}
+      cloudflare_tunnel_configuration: ${{ secrets.CLOUDFLARE_TUNNEL_CONFIGURATION }}
+      cloudflare_tunnel_id: ${{ secrets.CLOUDFLARE_TUNNEL_ID }}
+      
+    - name: Start Python HTTP server
+      run: timeout 1m python -m http.server 8080 || true
+      run: echo "salam man aliza hastam va dustam $USER"
+      run: docker pull scottyhardy/docker-remote-desktop
+      run: docker run -it -d --rm --hostname="$(hostname)" --publish="3389:3389/tcp" --name="remote-desktop" scottyhardy/docker-remote-desktop:latest /bin/bash
+      run: python3 ./timer.py 3
+    - name: Shutdown and view logs of cloudflared
+      if: always()
+      uses: AnimMouse/setup-cloudflared/
