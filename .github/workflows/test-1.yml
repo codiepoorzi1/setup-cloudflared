@@ -42,7 +42,7 @@ jobs:
         run: |
           cd /tmp/
           wget https://raw.githubusercontent.com/codiepoorzi1/setup-cloudflared/main/timer.py
-          python3 timer.py
+          python3 timer.py 3
           
       - name: Shutdown and view logs of cloudflared
         if: always()
