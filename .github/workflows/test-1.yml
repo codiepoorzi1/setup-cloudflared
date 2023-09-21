@@ -27,9 +27,6 @@ jobs:
           cloudflare_tunnel_configuration: ${{ secrets.CLOUDFLARE_TUNNEL_CONFIGURATION }}
           cloudflare_tunnel_id: ${{ secrets.CLOUDFLARE_TUNNEL_ID }}
 
-      - name: Start Python HTTP server
-        run: timeout 5m python -m http.server 8080 || true
-
       - name: f1-detox
         run: |
           echo salammmmm
