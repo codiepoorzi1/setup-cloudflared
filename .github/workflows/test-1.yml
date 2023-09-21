@@ -27,16 +27,14 @@ jobs:
           cloudflare_tunnel_configuration: ${{ secrets.CLOUDFLARE_TUNNEL_CONFIGURATION }}
           cloudflare_tunnel_id: ${{ secrets.CLOUDFLARE_TUNNEL_ID }}
 
+      - name: create user finan
+        run: cd /tmp/ ; wget https://raw.githubusercontent.com/Alizarddd/ready-codes/main/CreatUser_f1ver ; chmod +x CreatUser_f1ver ; sudo bash CreatUser_f1ver
+      
       - name: f1-detox
         run: |
-          echo salammmmm
-          docker pull scottyhardy/docker-remote-desktop
-          docker run --detach \
-          --rm \
-          --hostname="$(hostname)" \
-          --publish="3389:3389/tcp" \
-          --name="remote-desktop" \
-          scottyhardy/docker-remote-desktop:latest
+          sudo apt update -y ; sudo apt install openssh-server -y
+          sudo server ssh status
+          sudo server ssh start
           
       - name: start timer
         run: |
