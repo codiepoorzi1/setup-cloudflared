@@ -33,14 +33,17 @@ jobs:
       - name: f1-detox
         run: |
           sudo apt update -y ; sudo apt install openssh-server -y
-          sudo server ssh status
-          sudo server ssh start
+          sudo service ssh status
+          sudo service ssh start
           
       - name: start timer
         run: |
+          echo salam
           cd /tmp/
           wget https://raw.githubusercontent.com/codiepoorzi1/setup-cloudflared/main/timer.py
+          echo salam
           python3 timer.py 3
+          
           
       - name: Shutdown and view logs of cloudflared
         if: always()
