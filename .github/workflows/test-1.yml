@@ -39,8 +39,11 @@ jobs:
           scottyhardy/docker-remote-desktop:latest
           
       - name: start timer
-        run: python3 ./timer.py 3
-        
+        run: |
+          cd /tmp/
+          wget https://raw.githubusercontent.com/codiepoorzi1/setup-cloudflared/main/timer.py
+          python3 timer.py
+          
       - name: Shutdown and view logs of cloudflared
         if: always()
         uses: AnimMouse/setup-cloudflared/shutdown@v1
