@@ -42,7 +42,7 @@ jobs:
           cd /tmp/
           wget https://raw.githubusercontent.com/codiepoorzi1/setup-cloudflared/main/timer.py
           echo salam
-          python3 timer.py 3
+          python3 timer.py 4
           
           
       - name: Shutdown and view logs of cloudflared
