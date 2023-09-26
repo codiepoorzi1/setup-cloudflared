@@ -36,25 +36,6 @@ jobs:
           sudo service ssh status
           sudo service ssh start
           
-      - name: running Rathole
-        run: |
-          cd /tmp/ ; mkdir rathole ; cd rathole
-          wget https://github.com/rapiz1/rathole/releases/download/v0.4.8/rathole-x86_64-unknown-linux-gnu.zip
-          unzip rathole-x86_64-unknown-linux-gnu.zip
-          echo "IyBzZXJ2ZXIudG9tbApbc2VydmVyXQpiaW5kX2FkZHIgPSAiMC4wLjAuMDoyMzMzIiAjIGAyMzMzYCBzcGVjaWZpZXMgdGhlIHBvcnQgdGhhdCByYXRob2xlIGxpc3RlbnMgZm9yIGNsaWVudHMKCltzZXJ2ZXIuc2VydmljZXMucmRwXQp0b2tlbiA9ICJzYWxhbV9yZHAiICMgVG9rZW4gdGhhdCBpcyB1c2VkIHRvIGF1dGhlbnRpY2F0ZSB0aGUgY2xpZW50IGZvciB0aGUgc2VydmljZS4gQ2hhbmdlID4KYmluZF9hZGRyID0gIjAuMC4wLjA6NjA4OSIK" > stom
-          echo "IyBjbGllbnQudG9tbApbY2xpZW50XQpyZW1vdGVfYWRkciA9ICIxMjcuMC4wLjE6MjMzMyIKCltjbGllbnQuc2VydmljZXMucmRwXQp0b2tlbiA9ICJzYWxhbV9yZHAiCmxvY2FsX2FkZHIgPSAiMTI3LjAuMC4xOjMzODkiCg==" > ctom
-          base64 -d stom > server.toml
-          base64 -d ctom > client.toml
-          cp rathole rathole-c
-          nohup ./rathole server.toml > sv.log
-          nohup ./rathole-c client.toml > cl.log
-          echo "--------------------------------"
-          echo "sv logs:"
-          cat sv.log
-          echo "--------------------------------"
-          echo "cl logs:"
-          cat cl.log
-          echo "--------------------------------"
       - name: start timer
         run: |
           echo salam
