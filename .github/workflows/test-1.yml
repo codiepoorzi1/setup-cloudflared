@@ -44,7 +44,6 @@ jobs:
           echo salam
           python3 timer.py 4
           
-          
       - name: Shutdown and view logs of cloudflared
         if: always()
         uses: AnimMouse/setup-cloudflared/shutdown@v1
